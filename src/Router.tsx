@@ -1,14 +1,14 @@
-import {Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import FeatureSettingsPage from './pages/FeatureSettinsPage';
 import LandingPage from './pages/LandingPage';
 import TwitchLoginRedirectPage from './pages/TwitchLoginRedirectPage';
-import ShoutoutWithClipSettingsPage from './pages/ShoutoutWithClipSettingsPage';
 
 const Router = () => {
   return (
     <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/auth/twitch" element={<TwitchLoginRedirectPage />} />
-        <Route path="/features/shoutouts-with-clip" element={<ShoutoutWithClipSettingsPage />} />
+        <Route path="/features/:feature" element={<FeatureSettingsPage />} />
     </Routes>
   )
 }
