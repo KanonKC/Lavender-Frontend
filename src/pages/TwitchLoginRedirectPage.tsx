@@ -10,7 +10,22 @@ const TwitchLoginRedirectPage = () => {
 
         if (code) {
             const authResponse = await getUserLoginAccessToken(code)
-            await createOrUpdateAccount(authResponse.data)
+            const userResponse = await createOrUpdateAccount(authResponse.data)
+
+            const user = userResponse.data
+
+            if (!user.twitchAccessToken || !user.twitchRefreshToken || !user.twitchTokenExpiresAt) {
+                return;
+            }
+
+            localStorage.setItem('username', user.username)
+            localStorage.setItem('twitchId', user.twitchId)
+            localStorage.setItem('twitchAccessToken', user.twitchAccessToken)
+            localStorage.setItem('twitchRefreshToken', user.twitchRefreshToken)
+            localStorage.setItem('twitchTokenExpiresAt', new Date(user.twitchTokenExpiresAt).getTime().toString())
+
+            window.location.href = '/'
+
         }
     }
 

@@ -1,3 +1,4 @@
+import { Account } from "@/types/Account.type";
 import { TwitchUserAuthorization } from "@/types/Twitch.type";
 import axios from "axios";
 
@@ -11,5 +12,5 @@ const accountAxios = axios.create({
 })
 
 export async function createOrUpdateAccount(payload: TwitchUserAuthorization) {
-    return accountAxios.post("/accounts", payload)
+    return accountAxios.post<Account>("/accounts", payload)
 }

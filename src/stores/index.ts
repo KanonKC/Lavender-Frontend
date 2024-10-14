@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './slices/counterSlice'
-import twitchAuthReducer from './slices/twitchAuthSlice'
+import accountReducer from './slices/accountSlice'
 
 export const store = configureStore({
     reducer: {
         counter: counterReducer,
-        twitchAuth: twitchAuthReducer
+        account: accountReducer
     }
 })
 
