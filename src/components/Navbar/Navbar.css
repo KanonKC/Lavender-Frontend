@@ -1,0 +1,5 @@
+.navbar-content {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 4px;
+}
