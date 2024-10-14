@@ -8,7 +8,7 @@ const Sidebar = () => {
     const navigate = useNavigate();
 	
     const SidebarItems = [
-        { title: "Shoutouts with Clip", path: "shoutouts-with-clip" },
+        { title: "Shoutouts with Clip", path: "shoutout-with-clip" },
         { title: "Show an Image", path: "show-an-image" },
         { title: "Tarot Card", path: "tarot-card" },
     ];
