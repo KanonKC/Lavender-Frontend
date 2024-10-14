@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import FeatureSettingsPage from './pages/FeatureSettinsPage';
+import FeatureSettingsPage from './pages/FeatureSettingsPage';
 import LandingPage from './pages/LandingPage';
 import TwitchLoginRedirectPage from './pages/TwitchLoginRedirectPage';
 

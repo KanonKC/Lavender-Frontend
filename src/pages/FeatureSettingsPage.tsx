@@ -1,8 +1,8 @@
-import ShotoutsWithClipSettings from "@/components/ShotoutsWithClipSettings/ShotoutsWithClipSettings";
+import ShoutoutWithClipSettings from "@/components/ShoutoutWithClipSettings/ShoutoutWithClipSettings";
 import ShowAnImageSettings from "@/components/ShowAnImageSettings/ShowAnImageSettings";
 import TarotCardSettings from "@/components/TarotCardSettings/TarotCardSettings";
 import Navbar from "@/layouts/Navbar/Navbar";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const FeatureSettingsPage = () => {
@@ -15,9 +15,11 @@ const FeatureSettingsPage = () => {
 	return (
 		<div>
 			<Navbar>
-				{ feature === 'shoutouts-with-clip' && <ShotoutsWithClipSettings />}
-                { feature === 'show-an-image' && <ShowAnImageSettings />}
-                { feature === 'tarot-card' && <TarotCardSettings />}
+                <div className="mx-10 mt-10">
+                    { feature === 'shoutout-with-clip' && <ShoutoutWithClipSettings />}
+                    { feature === 'show-an-image' && <ShowAnImageSettings />}
+                    { feature === 'tarot-card' && <TarotCardSettings />}
+                </div>
 			</Navbar>
 		</div>
 	);
