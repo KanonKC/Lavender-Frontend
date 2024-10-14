@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar/Navbar"
+import Navbar from "@/layouts/Navbar/Navbar"
 import { Button } from "@/components/ui/button"
 import { useAppDispatch, useAppSelector } from "@/stores/hooks"
 
@@ -13,10 +13,11 @@ const LandingPage = () => {
 
     return (
         <div>
-            <Navbar/>
-            {count}
-            <Button onClick={handleOnClickIncrement}>Increase</Button>
-            LandingPage
+            <Navbar>
+                {count}
+                <Button onClick={handleOnClickIncrement}>Increase</Button>
+                LandingPage
+            </Navbar>
         </div>
     )
 }

@@ -1,0 +1,26 @@
+.top-navbar {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    background-color: white;
+}
+
+.navbar-spacing {
+    padding-top: 50px;
+}
+
+.top-navbar-content {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 4px;
+    align-items: center;
+}
+
+.sidebar-content-container {
+    display: flex;
+    height: 100vh;
+}
+
+.content-container {
+    padding-left: 250px;
+}
