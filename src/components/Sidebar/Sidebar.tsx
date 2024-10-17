@@ -8,7 +8,7 @@ const Sidebar = () => {
     const navigate = useNavigate();
 	
     const SidebarItems = [
-        { title: "Shoutouts with Clip", path: "shoutout-with-clip" },
+        { title: "Shoutout with Clip", path: "shoutout-with-clip" },
         { title: "Show an Image", path: "show-an-image" },
         { title: "Tarot Card", path: "tarot-card" },
     ];
@@ -16,8 +16,8 @@ const Sidebar = () => {
     return (
 		<div className="sidebar-container">
 			{
-                SidebarItems.map((item) => (
-                    <div onClick={() => navigate(`/features/${item.path}`)}>
+                SidebarItems.map((item, index) => (
+                    <div key={index} onClick={() => navigate(`/features/${item.path}`)}>
                         <SidebarItem title={item.title} isActive={feature === item.path}/>
                     </div>
                 ))

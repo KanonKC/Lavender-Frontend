@@ -29,7 +29,12 @@ const Navbar = ({
 
     useEffect(() => {
         dispatch({ type: 'account/loadAccountFromLocalStorage' })
-    }, [dispatch])
+
+        if (account.accessToken && (!account.twitchTokenExpiresAt || new Date(account.twitchTokenExpiresAt) < new Date())) {
+            dispatch({ type: 'account/logout' })
+        }
+
+    }, [dispatch, account])
 
   return (
     <div>

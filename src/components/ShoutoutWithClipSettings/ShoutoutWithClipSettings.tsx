@@ -1,6 +1,8 @@
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
+import { Switch } from "../ui/switch";
 
 const ShotoutsWithClipSettings = () => {
 	return (
@@ -18,8 +20,17 @@ const ShotoutsWithClipSettings = () => {
 
 				<div>
 					<div>
-						<Button>Enable</Button>
+						<Button>เปิดใช้งาน</Button>
 					</div>
+                    <div>
+                        {/* Settings: Featured Clip */}
+                        <div className="flex items-center space-x-2">
+                            <Label>เลือกแสดง Clip ที่ได้ Featured มาก่อน (ติดดาว)</Label>
+                            <Switch />
+                        </div>
+						<Button variant="secondary">ปิดใช้งาน</Button>
+						<Button>บันทึก</Button>
+                    </div>
 				</div>
 			</CardContent>
 		</Card>
