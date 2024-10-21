@@ -15,7 +15,7 @@ const FeatureSettingsPage = () => {
 	return (
 		<div>
 			<Navbar>
-                <div className="mx-10 mt-10">
+                <div className="mx-10 mt-10 pb-10">
                     { feature === 'shoutout-with-clip' && <ShoutoutWithClipSettings />}
                     { feature === 'show-an-image' && <ShowAnImageSettings />}
                     { feature === 'tarot-card' && <TarotCardSettings />}

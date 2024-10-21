@@ -18,6 +18,7 @@ const TwitchLoginRedirectPage = () => {
                 return;
             }
 
+            localStorage.setItem('accountId', user.id)
             localStorage.setItem('username', user.username)
             localStorage.setItem('twitchId', user.twitchId)
             localStorage.setItem('twitchAccessToken', user.twitchAccessToken)

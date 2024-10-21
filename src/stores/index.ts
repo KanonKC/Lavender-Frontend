@@ -1,13 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './slices/counterSlice'
 import accountReducer from './slices/accountSlice'
+import shoutoutWithClipReducer from './slices/shoutoutWithClipSlice'
 
 export const store = configureStore({
     reducer: {
         counter: counterReducer,
-        account: accountReducer
+        account: accountReducer,
+        shoutoutWithClip: shoutoutWithClipReducer
     }
 })
+
 
 // Infer the `RootState`,  `AppDispatch`, and `AppStore` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

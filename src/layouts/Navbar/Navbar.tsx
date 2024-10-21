@@ -1,10 +1,10 @@
-import { createTwitchOAuthUrl } from '@/utils/createTwitchOAuthUrl'
+import LoginTwitchButton from '@/components/LoginTwitchButton/LoginTwitchButton'
+import Sidebar from '@/components/Sidebar/Sidebar'
+import { useAppDispatch, useAppSelector } from '@/stores/hooks'
+import { useEffect, useMemo } from 'react'
 import { Button } from '../../components/ui/button'
 import { Separator } from '../../components/ui/separator'
 import './Navbar.css'
-import { useAppDispatch, useAppSelector } from '@/stores/hooks'
-import { useEffect, useMemo } from 'react'
-import Sidebar from '@/components/Sidebar/Sidebar'
 
 const Navbar = ({
     children
@@ -16,11 +16,6 @@ const Navbar = ({
     const dispatch = useAppDispatch()
 
     const isLoggedIn = useMemo(() => !!(account.username || account.twitchId), [account])
-
-    const handleOnClickLoginButton = () => {
-        const url = createTwitchOAuthUrl()
-        window.location.href = url
-    }
 
     const handleOnClickLogoutButton = () => {
         dispatch({ type: 'account/logout' })
@@ -41,7 +36,7 @@ const Navbar = ({
         <div className='top-navbar'>
             <div className='top-navbar-content'>
                 { !isLoggedIn ? (
-                    <Button onClick={handleOnClickLoginButton}>Login using Twitch account</Button>
+                    <LoginTwitchButton />
                 ) : (
                     <div>
                         <span className='pr-2'>{account.username}</span>

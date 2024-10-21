@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 export interface AccountState {
+    accountId: string | null;
     username: string | null;
     twitchId: string | null;
     accessToken: string | null
@@ -9,6 +10,7 @@ export interface AccountState {
 }
 
 const initialState: AccountState = {
+    accountId: null,
     username: null,
     twitchId: null,
     accessToken: null,
@@ -20,6 +22,9 @@ export const accountSlice = createSlice({
     name: 'account',
     initialState,
     reducers: {
+        setAccountId: (state: AccountState, action: PayloadAction<string>) => {
+            state.accountId = action.payload
+        },
         setTwitchId: (state: AccountState, action: PayloadAction<string>) => {
             state.twitchId = action.payload
         },
@@ -36,6 +41,7 @@ export const accountSlice = createSlice({
             state.twitchTokenExpiresAt = action.payload
         },
         loadAccountFromLocalStorage: (state: AccountState) => {
+            state.accountId = localStorage.getItem('accountId')
             state.username = localStorage.getItem('username')
             state.twitchId = localStorage.getItem('twitchId')
             state.accessToken = localStorage.getItem('twitchAccessToken')
@@ -43,11 +49,13 @@ export const accountSlice = createSlice({
             state.twitchTokenExpiresAt = Number(localStorage.getItem('twitchTokenExpiresAt'))
         },
         logout: (state: AccountState) => {
+            state.accountId = null
             state.username = null
             state.twitchId = null
             state.accessToken = null
             state.refreshToken = null
             state.twitchTokenExpiresAt = null
+            localStorage.removeItem('accountId')
             localStorage.removeItem('username')
             localStorage.removeItem('twitchId')
             localStorage.removeItem('twitchAccessToken')

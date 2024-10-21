@@ -1,11 +1,15 @@
 // import React, { useEffect, useState } from "react";
+import { createChannelChatMessageEventWorkflow } from "@/service/Websocket.service";
 import socket from "@/socket";
+import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 
 const ShoutoutWithClipDisplayPage = () => {
 	// const [videoFilePath, setVideoFilePath] = useState(null);
 
+    const accountId = useAppSelector((state) => state.account.accountId)
+    const dispatch = useAppDispatch()
     const [videoUrl, setVideoUrl] = useState<string | null>(null)
     const [playing, setPlaying] = useState(false)
 
@@ -14,12 +18,19 @@ const ShoutoutWithClipDisplayPage = () => {
     }
 
     const handleVideoReady = () => {
-        setTimeout(() => setPlaying(true), 3000)
+        setTimeout(() => {
+            setPlaying(true)
+            console.log('playing')
+        }, 3000)
     }
 
     useEffect(() => {
-
         // console.log('socket', socket)
+
+        dispatch({ type: 'account/loadAccountFromLocalStorage' })
+
+        if (!accountId) return
+        createChannelChatMessageEventWorkflow(accountId)
 
         socket.on('recieveShoutoutWithClip', (response) => {
             console.log(response)
@@ -40,7 +51,7 @@ const ShoutoutWithClipDisplayPage = () => {
         return () => {
             socket.off('deliverShoutoutWithClip')
         }
-    }, [])
+    }, [accountId, dispatch])
 
 	return (
 		<div>
@@ -52,8 +63,8 @@ const ShoutoutWithClipDisplayPage = () => {
                     onReady={handleVideoReady}
                     onEnded={handleVideoEnd}
                     url={videoUrl}
-                    width={1920}
-                    height={1080}
+                    width={640}
+                    height={360}
                 />
             }
 		</div>
