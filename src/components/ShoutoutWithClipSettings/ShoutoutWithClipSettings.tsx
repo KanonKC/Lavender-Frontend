@@ -1,15 +1,18 @@
 import { deliverShoutoutWithClip } from "@/service/ShoutoutWithClip.service";
 import { useAppDispatch, useAppSelector } from "@/stores/hooks";
-import { loadShoutoutWithClip, updateShoutoutWithClip } from "@/stores/slices/shoutoutWithClipSlice";
+import {
+	loadShoutoutWithClip,
+	updateShoutoutWithClip,
+} from "@/stores/slices/shoutoutWithClipSlice";
 import { Dot, RotateCw, TriangleAlert } from "lucide-react";
 import { useEffect, useMemo } from "react";
 import LoginTwitchButton from "../LoginTwitchButton/LoginTwitchButton";
 import ReadOnlyInput from "../ReadOnlyInput/ReadOnlyInput";
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
 } from "../ui/accordion";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
@@ -59,22 +62,22 @@ const ShotoutsWithClipSettings = () => {
 		});
 	};
 
-    const onClickSaveButton = () => {
-        updateShoutoutWithClip(dispatch, shoutoutWithClip);
-    }
+	const onClickSaveButton = () => {
+		updateShoutoutWithClip(dispatch, shoutoutWithClip);
+	};
 
-    const onClickTestShoutout = () => {
-        dispatch({ type: "shoutoutWithClip/setIsLoading", payload: true });
-        
-        if (!accountId) {
-            dispatch({ type: "shoutoutWithClip/setIsLoading", payload: false });
-            return;
-        };
+	const onClickTestShoutout = () => {
+		dispatch({ type: "shoutoutWithClip/setIsLoading", payload: true });
 
-        deliverShoutoutWithClip(accountId).then(() => {
-            dispatch({ type: "shoutoutWithClip/setIsLoading", payload: false });
-        });
-    }
+		if (!accountId) {
+			dispatch({ type: "shoutoutWithClip/setIsLoading", payload: false });
+			return;
+		}
+
+		deliverShoutoutWithClip(accountId).then(() => {
+			dispatch({ type: "shoutoutWithClip/setIsLoading", payload: false });
+		});
+	};
 
 	useEffect(() => {
 		if (!accountId) return;
@@ -227,9 +230,13 @@ const ShotoutsWithClipSettings = () => {
 							</Accordion>
 
 							<div className="mt-4 flex justify-end">
-								<Button disabled={isLoading} onClick={onClickSaveButton}>บันทึก</Button>
+								<Button
+									disabled={isLoading}
+									onClick={onClickSaveButton}
+								>
+									บันทึก
+								</Button>
 							</div>
-
 						</VerticalMultiStepSectionItem>
 						<VerticalMultiStepSectionItem
 							nodeLabel="3"
@@ -270,16 +277,20 @@ const ShotoutsWithClipSettings = () => {
 									</div>
 								</ul>
 							</div>
-
 						</VerticalMultiStepSectionItem>
 						<VerticalMultiStepSectionItem
 							nodeLabel="4"
 							title="ทดสอบการทำงาน"
 							description="ลองกดปุ่มทดสอบด้านล่างดู จะต้องมี Clip แสดงขึ้นมาบนหน้าจอ OBS ของคุณ"
 							lastNode
-                            hideSeparator
+							hideSeparator
 						>
-							<Button disabled={isLoading} onClick={onClickTestShoutout}>ทดสอบการทำงาน</Button>
+							<Button
+								disabled={isLoading}
+								onClick={onClickTestShoutout}
+							>
+								ทดสอบการทำงาน
+							</Button>
 						</VerticalMultiStepSectionItem>
 					</VerticalMultiStepSection>
 

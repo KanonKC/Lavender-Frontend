@@ -4,6 +4,7 @@ export const TwitchOAuthScopes = [
     "channel:manage:predictions",
     "user:read:chat",
     "user:read:email",
+    "channel:read:redemptions",
 ]
 
 const { VITE_FRONTEND_URL, VITE_TWITCH_CLIENT_ID } = import.meta.env;

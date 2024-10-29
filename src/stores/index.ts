@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './slices/counterSlice'
 import accountReducer from './slices/accountSlice'
 import shoutoutWithClipReducer from './slices/shoutoutWithClipSlice'
+import showAnImageReducer from './slices/showAnImageSlice'
 
 export const store = configureStore({
     reducer: {
         counter: counterReducer,
         account: accountReducer,
-        shoutoutWithClip: shoutoutWithClipReducer
+        shoutoutWithClip: shoutoutWithClipReducer,
+        showAnImage: showAnImageReducer
     }
 })
 
