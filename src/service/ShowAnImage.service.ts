@@ -21,6 +21,6 @@ export function disableShowAnImage(accountId: string) {
     return baseUrl.post<ShowAnImage>(`/show-an-image/${accountId}/settings/disable`);
 }
 
-export function deliverShowAnImage(accountId: string) {
-    return baseUrl.post<ShowAnImage>(`/show-an-image/${accountId}/test`);
+export function deliverShowAnImage(twitchId: string) {
+    return baseUrl.post<ShowAnImage>(`/show-an-image/${twitchId}/test`);
 }

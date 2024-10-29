@@ -1,8 +1,8 @@
-import { deliverShoutoutWithClip } from "@/service/ShoutoutWithClip.service";
+import { deliverShowAnImage } from "@/service/ShowAnImage.service";
 import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import {
-	loadShowAnImage,
-	updateShowAnImage,
+    loadShowAnImage,
+    updateShowAnImage,
 } from "@/stores/slices/showAnImageSlice";
 import { Dot, RotateCw, TriangleAlert } from "lucide-react";
 import { useEffect, useMemo } from "react";
@@ -24,7 +24,8 @@ const ShowAnImageSettings = () => {
 	const account = useAppSelector((state) => state.account);
 	const showAnImage = useAppSelector((state) => state.showAnImage);
 
-	const accountId = useAppSelector((state) => state.account.accountId);
+    const accountId = useAppSelector((state) => state.account.accountId);
+	const twitchId = useAppSelector((state) => state.account.twitchId);
 
 	// const isEnabled = true; // useAppSelector((state) => state.shoutoutWithClip.isEnabled);
 	const enableImageModeration = useAppSelector(
@@ -56,17 +57,15 @@ const ShowAnImageSettings = () => {
 		updateShowAnImage(dispatch, showAnImage);
 	};
 
-	const onClickTestShoutout = () => {
-		dispatch({ type: "shoutoutWithClip/setIsLoading", payload: true });
-
-		if (!accountId) {
-			dispatch({ type: "shoutoutWithClip/setIsLoading", payload: false });
-			return;
+	const onClickTestShowAnImage = async () => {
+        
+        if (!twitchId) {
+            return;
 		}
 
-		deliverShoutoutWithClip(accountId).then(() => {
-			dispatch({ type: "shoutoutWithClip/setIsLoading", payload: false });
-		});
+        // dispatch({ type: "showAnImage/setIsLoading", payload: true });
+		await deliverShowAnImage(twitchId)
+        // dispatch({ type: "showAnImage/setIsLoading", payload: false });
 	};
 
 	useEffect(() => {
@@ -211,7 +210,7 @@ const ShowAnImageSettings = () => {
 						>
 							<Button
 								disabled={isLoading}
-								onClick={onClickTestShoutout}
+								onClick={onClickTestShowAnImage}
 							>
 								ทดสอบการทำงาน
 							</Button>
